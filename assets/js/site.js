@@ -20,8 +20,11 @@
   const sl=$$('.slide',hero),dots=$$('.dots button',hero);let cur=0,t,busy=false;
   const setFg=i=>{const r=document.documentElement.style;r.setProperty('--hfg',sl[i].dataset.fg);r.setProperty('--hbg',sl[i].dataset.bg)};
   setFg(0);
+  /* сцена слайда грузится только перед показом */
+  const hydrate=i=>{const s=sl[i],im=$('img[data-src]',s);if(!im)return;const so=$('source[data-srcset]',s);if(so){so.srcset=so.dataset.srcset;so.removeAttribute('data-srcset')}im.src=im.dataset.src;im.removeAttribute('data-src')};
+  addEventListener('load',()=>hydrate(1));
   function go(n){
-   if(n===cur||busy)return;busy=true;clearTimeout(t);
+   if(n===cur||busy)return;busy=true;clearTimeout(t);hydrate(n);hydrate((n+1)%sl.length);
    const a=sl[cur],b=sl[n];cur=n;dots.forEach((d,i)=>d.classList.toggle('on',i===n));setFg(n);
    const done=()=>{a.classList.remove('on');b.classList.remove('next');b.classList.add('on');b.style.clipPath='';busy=false;t=setTimeout(()=>go((cur+1)%sl.length),6500)};
    b.classList.add('next');
