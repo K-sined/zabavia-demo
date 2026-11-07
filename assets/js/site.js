@@ -29,7 +29,7 @@
    const done=()=>{a.classList.remove('on');b.classList.remove('next');b.classList.add('on');b.style.clipPath='';busy=false;t=setTimeout(()=>go((cur+1)%sl.length),6500)};
    b.classList.add('next');
    if(calm||!G){done();return}
-   const x=innerWidth>760?'68% 55%':'50% 66%';
+   const x=innerWidth>innerHeight&&innerWidth>760?'68% 55%':'50% 66%';
    G.fromTo(b,{clipPath:`circle(0% at ${x})`},{clipPath:`circle(130% at ${x})`,duration:1.15,ease:'power3.inOut',onComplete:done});
    G.fromTo($('picture img',b),{scale:1.14},{scale:1,duration:1.7,ease:'power3.out'});
    G.fromTo($('.ttl span',b),{yPercent:110},{yPercent:0,duration:.95,delay:.34,ease:'power4.out'});
@@ -86,7 +86,7 @@
  $$('.nums [data-n]').forEach(b=>{const n=+b.dataset.n,o={v:0};G.to(o,{v:n,duration:1.4,ease:'power2.out',onUpdate:()=>b.textContent=Math.round(o.v),scrollTrigger:{trigger:b,start:'top 92%',once:true}})});
 
  /* горизонтальная лента */
- ScrollTrigger.matchMedia({'(min-width:761px)':()=>{const tr=$('#track');if(!tr)return;
+ ScrollTrigger.matchMedia({'(min-width:761px) and (min-aspect-ratio:1/1)':()=>{const tr=$('#track');if(!tr)return;
   const dist=()=>tr.scrollWidth-innerWidth;
   G.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#band',pin:true,scrub:.6,end:()=>'+='+dist(),invalidateOnRefresh:true}})}});
 
