@@ -96,6 +96,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .lineup .lr.f.sh{transform:translateX(calc(var(--h) * .28))}
 .lineup.stag.even{--h:min(calc(100cqh / 2.04),calc(100cqw / var(--sum)))}
 .lineup.even .lr{width:100%;justify-content:space-evenly}
+.lineup.stag.gap{--h:min(calc(100cqh / 2.06),calc(100cqw / var(--sum)))}
+.lineup.gap .lr.f{margin-top:calc(var(--h) * .04)}
 .lineup.even .lr.f{margin-top:calc(var(--h) * .04)}
 .lineup.even .lr.b.sh{transform:translateX(-7%)}
 .lineup.even .lr.f.sh{transform:translateX(7%)}
