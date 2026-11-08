@@ -86,17 +86,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .track{display:flex;width:max-content}
 .panel{flex:none;width:min(92vw,1320px);height:100vh;height:100svh;min-height:620px;background:var(--bg);color:var(--fg);padding:clamp(84px,11vh,110px) clamp(22px,3.4vw,52px) clamp(22px,4vh,40px);display:flex;flex-direction:column;position:relative;overflow:hidden;text-decoration:none}
 .panel .kick{color:var(--fg)}
-.pname{font-size:clamp(70px,12.5vw,190px);line-height:1;margin-top:4px}
-.lineup{flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center;gap:clamp(6px,1vw,16px);--h:min(44vh,calc((min(92vw,1320px) - 110px - (var(--count) - 1) * 16px) / var(--sum)))}
+.pname{font-size:clamp(64px,min(9vw,15vh),150px);line-height:.95;margin-top:4px}
+.lineup{flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center;gap:clamp(6px,1vw,16px);container-type:size;--h:min(calc(100cqh / 1.74),calc(100cqw / var(--sum)))}
+.lineup.stag{flex-direction:column;align-items:center;justify-content:flex-end;gap:0}
+.lineup .lr{display:flex;align-items:flex-end;justify-content:center;gap:clamp(22px,3.4vw,64px)}
+.lineup .lr.f{margin-top:calc(var(--h) * -.28);position:relative;z-index:1}
+.lineup .lr.b.sh{transform:translateX(calc(var(--h) * -.28))}
+.lineup .lr.f.sh{transform:translateX(calc(var(--h) * .28))}
+
 .lineup img{flex:none;width:auto;transition:transform .5s cubic-bezier(.2,1.7,.4,1);filter:drop-shadow(0 18px 14px rgba(0,0,0,.34))}
 .panel:hover .lineup img:nth-child(2n){transform:translateY(-10px)}
-.go{font-weight:700;align-self:flex-end;margin-top:8px}
+.go{font-weight:700;align-self:flex-end;margin-top:10px;position:relative;z-index:2}
 .panel.intro{--bg:var(--sun);--fg:var(--ink);width:min(60vw,720px);justify-content:center;gap:18px}
 .panel.intro .d{font-size:clamp(54px,7.2vw,118px)}
 @media(max-width:760px),(max-aspect-ratio:1/1){
  .track{flex-direction:column;width:100%}
  .panel,.panel.intro{width:100%;height:auto;min-height:0;padding:44px 18px 26px}
- .lineup{flex:none;flex-wrap:wrap;margin:10px 0;gap:8px 6px;--h:27vw}
+ .lineup{flex:none;margin:10px 0;container-type:normal;--h:calc((100vw - 56px) / var(--sum))}
+ .lineup .lr{gap:10px}
  .pname{font-size:min(17.2vw,120px)}
  .panel.intro .d{font-size:min(14vw,96px)}
 }

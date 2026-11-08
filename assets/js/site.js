@@ -94,3 +94,6 @@
  $$('.sub-pic img,.pic img').forEach(i=>G.fromTo(i,{scale:1.1},{scale:1,ease:'none',scrollTrigger:{trigger:i.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
  addEventListener('load',()=>ScrollTrigger.refresh());
 })();
+
+/* preload-lazy: после загрузки страницы догружаем все картинки заранее, чтобы фигурки не появлялись постепенно */
+window.addEventListener('load',()=>setTimeout(()=>document.querySelectorAll('img[loading=lazy]').forEach(i=>{i.loading='eager'}),400));
