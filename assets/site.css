@@ -94,6 +94,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .lineup .lr.f{margin-top:calc(var(--h) * -.28);position:relative;z-index:1}
 .lineup .lr.b.sh{transform:translateX(calc(var(--h) * -.28))}
 .lineup .lr.f.sh{transform:translateX(calc(var(--h) * .28))}
+.lineup.stag.even{--h:min(calc(100cqh / 2.04),calc(100cqw / var(--sum)))}
+.lineup.even .lr{width:100%;justify-content:space-evenly}
+.lineup.even .lr.f{margin-top:calc(var(--h) * .04)}
+.lineup.even .lr.b.sh{transform:translateX(-7%)}
+.lineup.even .lr.f.sh{transform:translateX(7%)}
 
 .lineup img{flex:none;width:auto;transition:transform .5s cubic-bezier(.2,1.7,.4,1);filter:drop-shadow(0 18px 14px rgba(0,0,0,.34))}
 .panel:hover .lineup img:nth-child(2n){transform:translateY(-10px)}
